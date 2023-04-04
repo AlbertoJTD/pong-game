@@ -33,8 +33,13 @@ while not game_over:
     screen.update()
     ball.move()
 
+    # Detect collision at the top and bottom
     if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.bounce()
+        ball.bounce_y()
 
+    # Detect collision with right_paddle
+    if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < -320:
+        ball.bounce_x()
+    #elif ball.xcord() > 320 or ball.xcor() < -320:
 
 screen.exitonclick()
